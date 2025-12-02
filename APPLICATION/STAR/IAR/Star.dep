@@ -1,0 +1,964 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<project>
+  <fileVersion>2</fileVersion>
+  <fileChecksum>1608955397</fileChecksum>
+  <configuration>
+    <name>STAR-NA-Debug</name>
+    <outputs>
+      <file>$PROJ_DIR$\..\UIP\uip_arch.h</file>
+      <file>$TOOLKIT_DIR$\inc\clib\string.h</file>
+      <file>$TOOLKIT_DIR$\config\multiplier32_loc2.xcl</file>
+      <file>$PROJ_DIR$\Output\Obj\enc424j600.pbi</file>
+      <file>$PROJ_DIR$\Output\Exe\Star.d43</file>
+      <file>$PROJ_DIR$\Output\Obj\timer.pbi</file>
+      <file>$PROJ_DIR$\..\UIP\clock-arch.h</file>
+      <file>$PROJ_DIR$\Output\Obj\timer_drv.pbi</file>
+      <file>$PROJ_DIR$\pinconfig.h</file>
+      <file>$PROJ_DIR$\Output\Obj\enc424j600.r43</file>
+      <file>$PROJ_DIR$\Output\Obj\dfu.pbi</file>
+      <file>$PROJ_DIR$\..\..\..\COMMON\defines.h</file>
+      <file>$PROJ_DIR$\..\..\..\DRV\enc424j600.h</file>
+      <file>$PROJ_DIR$\Output\Obj\clock-arch.pbi</file>
+      <file>$PROJ_DIR$\network.h</file>
+      <file>$PROJ_DIR$\..\UIP\lc-switch.h</file>
+      <file>$PROJ_DIR$\Output\Obj\client.r43</file>
+      <file>$PROJ_DIR$\Output\Obj\SPI.r43</file>
+      <file>$TOOLKIT_DIR$\inc\in430.h</file>
+      <file>$PROJ_DIR$\..\UIP\timer.h</file>
+      <file>$PROJ_DIR$\main.h</file>
+      <file>$TOOLKIT_DIR$\inc\clib\sysmac.h</file>
+      <file>$PROJ_DIR$\..\UIP\dhcpc.h</file>
+      <file>$PROJ_DIR$\Output\Obj\dfu.r43</file>
+      <file>$TOOLKIT_DIR$\inc\clib\stdlib.h</file>
+      <file>$PROJ_DIR$\dfu.h</file>
+      <file>$PROJ_DIR$\Output\Obj\uip_arp.pbi</file>
+      <file>$PROJ_DIR$\..\..\..\DRV\flash.h</file>
+      <file>$PROJ_DIR$\Output\Obj\main.r43</file>
+      <file>$PROJ_DIR$\Output\Obj\network.r43</file>
+      <file>$PROJ_DIR$\Output\List\Star.map</file>
+      <file>$PROJ_DIR$\Output\Obj\flash.r43</file>
+      <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
+      <file>$PROJ_DIR$\Output\Obj\client.pbi</file>
+      <file>$PROJ_DIR$\Output\Obj\timer.r43</file>
+      <file>$PROJ_DIR$\..\..\..\DRV\timer_drv.h</file>
+      <file>$PROJ_DIR$\Output\Obj\uip.r43</file>
+      <file>$PROJ_DIR$\client.h</file>
+      <file>$PROJ_DIR$\..\UIP\pt.h</file>
+      <file>$PROJ_DIR$\Output\Obj\uip_arp.r43</file>
+      <file>$TOOLKIT_DIR$\inc\msp430x16x.h</file>
+      <file>$PROJ_DIR$\hal_enc.h</file>
+      <file>$PROJ_DIR$\Output\Obj\support.r43</file>
+      <file>$PROJ_DIR$\Output\Obj\general.r43</file>
+      <file>$TOOLKIT_DIR$\inc\clib\stdio.h</file>
+      <file>$PROJ_DIR$\..\UIP\uip_arp.h</file>
+      <file>$PROJ_DIR$\..\UIP\uipopt.h</file>
+      <file>$PROJ_DIR$\Output\Obj\uip.pbi</file>
+      <file>$PROJ_DIR$\Output\Obj\dhcpc.r43</file>
+      <file>$PROJ_DIR$\Output\Obj\timer_drv.r43</file>
+      <file>$PROJ_DIR$\Output\Obj\hal_enc.pbi</file>
+      <file>$PROJ_DIR$\lnk430f5659.xcl</file>
+      <file>$PROJ_DIR$\..\UIP\clock-arch.c</file>
+      <file>$PROJ_DIR$\..\UIP\dhcpc.c</file>
+      <file>$PROJ_DIR$\client.c</file>
+      <file>$PROJ_DIR$\..\..\..\DRV\flash.c</file>
+      <file>$PROJ_DIR$\dfu.c</file>
+      <file>$PROJ_DIR$\..\..\..\DRV\enc424j600.c</file>
+      <file>$PROJ_DIR$\..\..\..\COMMON\general.c</file>
+      <file>$PROJ_DIR$\hal_enc.c</file>
+      <file>$PROJ_DIR$\network.c</file>
+      <file>$PROJ_DIR$\..\..\..\DRV\SPI.c</file>
+      <file>$PROJ_DIR$\main.c</file>
+      <file>$PROJ_DIR$\..\..\..\DRV\support.s43</file>
+      <file>$PROJ_DIR$\Output\Obj\general.pbi</file>
+      <file>$PROJ_DIR$\..\UIP\timer.c</file>
+      <file>$PROJ_DIR$\..\..\..\DRV\timer_drv.c</file>
+      <file>$PROJ_DIR$\..\UIP\uip.c</file>
+      <file>$PROJ_DIR$\..\UIP\uip_arp.c</file>
+      <file>$PROJ_DIR$\Output\Obj\flash.pbi</file>
+      <file>$PROJ_DIR$\..\..\..\DRV\SPI.h</file>
+      <file>$PROJ_DIR$\Output\Obj\network.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\clib\stdarg.h</file>
+      <file>$PROJ_DIR$\Output\Obj\SPI.pbi</file>
+      <file>$PROJ_DIR$\..\..\..\DRV\enc424j600conf.h</file>
+      <file>$PROJ_DIR$\Output\Obj\dhcpc.pbi</file>
+      <file>$PROJ_DIR$\..\..\..\COMMON\general.h</file>
+      <file>$PROJ_DIR$\Output\Obj\clock-arch.r43</file>
+      <file>$TOOLKIT_DIR$\lib\clib\cl430xlf.r43</file>
+      <file>$PROJ_DIR$\Output\Obj\hal_enc.r43</file>
+      <file>$PROJ_DIR$\..\UIP\uip-conf.h</file>
+      <file>$PROJ_DIR$\..\UIP\uip.h</file>
+      <file>$TOOLKIT_DIR$\inc\msp430f5659.h</file>
+      <file>$PROJ_DIR$\..\UIP\clock.h</file>
+      <file>$PROJ_DIR$\Output\Obj\main.pbi</file>
+      <file>$PROJ_DIR$\..\UIP\lc.h</file>
+    </outputs>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 30 4</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Output\Exe\Star.d43</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 30</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 51 2 17 16 77 23 48 9 31 43 79 28 29 42 34 49 36 39 78</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\UIP\clock-arch.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 77</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 13</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 6 20 11 82 18 32 8</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 6 20 11 82 18 32 8</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\UIP\dhcpc.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 48</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 75</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 44 72 21 1 81 46 80 22 19 83 6 38 85 15 37 11 82 18 32 8 20</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 44 72 21 1 81 46 80 22 19 83 6 38 85 15 37 11 82 18 32 8 20</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\client.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 16</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 33</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 11 82 18 32 8 20 37 81 46 80 22 19 83 6 38 85 15 76 35 25 27 1 21 24</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 11 82 18 32 8 20 37 81 46 80 22 19 83 6 38 85 15 76 35 25 27 1 21 24</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\DRV\flash.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 31</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 69</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 11 82 18 32 8 20 1 21 27 35</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 11 82 18 32 8 20 1 21 27 35</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\dfu.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 23</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 10</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 1 21 11 82 18 32 8 20 76 25 27 37 81 46 80 22 19 83 6 38 85 15</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 1 21 11 82 18 32 8 20 76 25 27 37 81 46 80 22 19 83 6 38 85 15</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\DRV\enc424j600.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 9</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 3</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 12 11 82 18 32 8 20 74 35 41</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 12 11 82 18 32 8 20 74 35 41</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\COMMON\general.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 43</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 64</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 11 82 18 32 8 20 76 37</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 11 82 18 32 8 20 76 37</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\hal_enc.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 79</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 50</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 82 18 32 35 11 8 20 41 70</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 82 18 32 35 11 8 20 41 70</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\network.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 29</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 71</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 14 11 82 18 32 8 20 12 81 46 80 22 19 83 6 38 85 15 37</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 14 11 82 18 32 8 20 12 81 46 80 22 19 83 6 38 85 15 37</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\DRV\SPI.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 17</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 73</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 70 11 82 18 32 8 20 41 35</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 70 11 82 18 32 8 20 41 35</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\main.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 28</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 84</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 20 11 82 18 32 8 35 12 14 41 81 46 80 22 19 83 6 38 85 15 37 45 27 24 21 76 1 70 25</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 20 11 82 18 32 8 35 12 14 41 81 46 80 22 19 83 6 38 85 15 37 45 27 24 21 76 1 70 25</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\DRV\support.s43</name>
+      <outputs>
+        <tool>
+          <name>A430</name>
+          <file> 42</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>A430</name>
+          <file> 40</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\UIP\timer.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 34</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 5</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 83 6 19</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 83 6 19</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\DRV\timer_drv.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 49</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 7</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 35 11 82 18 32 8 20 24 21 76</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 35 11 82 18 32 8 20 24 21 76</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\UIP\uip.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 36</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 47</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 81 46 80 22 19 83 6 38 85 15 37 11 82 18 32 8 20 0 1 21</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 81 46 80 22 19 83 6 38 85 15 37 11 82 18 32 8 20 0 1 21</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\UIP\uip_arp.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 39</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 26</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 45 81 46 80 22 19 83 6 38 85 15 37 11 82 18 32 8 20 1 21</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 45 81 46 80 22 19 83 6 38 85 15 37 11 82 18 32 8 20 1 21</file>
+        </tool>
+      </inputs>
+    </file>
+  </configuration>
+  <configuration>
+    <name>STAR-NA-Release</name>
+    <outputs>
+      <file>$PROJ_DIR$\..\UIP\uip_arch.h</file>
+      <file>$TOOLKIT_DIR$\inc\clib\string.h</file>
+      <file>$TOOLKIT_DIR$\config\multiplier32_loc2.xcl</file>
+      <file>$PROJ_DIR$\Output\Obj\enc424j600.pbi</file>
+      <file>$PROJ_DIR$\Output\Obj\timer.pbi</file>
+      <file>$PROJ_DIR$\..\UIP\clock-arch.h</file>
+      <file>$PROJ_DIR$\Output\Obj\timer_drv.pbi</file>
+      <file>$PROJ_DIR$\pinconfig.h</file>
+      <file>$PROJ_DIR$\Output\Obj\enc424j600.r43</file>
+      <file>$PROJ_DIR$\Output\Obj\dfu.pbi</file>
+      <file>$PROJ_DIR$\..\..\..\COMMON\defines.h</file>
+      <file>$PROJ_DIR$\..\..\..\DRV\enc424j600.h</file>
+      <file>$PROJ_DIR$\Output\Obj\clock-arch.pbi</file>
+      <file>$PROJ_DIR$\network.h</file>
+      <file>$PROJ_DIR$\..\UIP\lc-switch.h</file>
+      <file>$PROJ_DIR$\Output\Obj\client.r43</file>
+      <file>$PROJ_DIR$\Output\Obj\SPI.r43</file>
+      <file>$TOOLKIT_DIR$\inc\in430.h</file>
+      <file>$PROJ_DIR$\..\UIP\timer.h</file>
+      <file>$PROJ_DIR$\main.h</file>
+      <file>$TOOLKIT_DIR$\inc\clib\sysmac.h</file>
+      <file>$PROJ_DIR$\..\UIP\dhcpc.h</file>
+      <file>$PROJ_DIR$\Output\Obj\dfu.r43</file>
+      <file>$TOOLKIT_DIR$\inc\clib\stdlib.h</file>
+      <file>$PROJ_DIR$\dfu.h</file>
+      <file>$PROJ_DIR$\Output\Obj\uip_arp.pbi</file>
+      <file>$PROJ_DIR$\..\..\..\DRV\flash.h</file>
+      <file>$PROJ_DIR$\Output\Obj\main.r43</file>
+      <file>$PROJ_DIR$\Output\Obj\network.r43</file>
+      <file>$PROJ_DIR$\Output\List\Star.map</file>
+      <file>$PROJ_DIR$\Output\Obj\flash.r43</file>
+      <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
+      <file>$PROJ_DIR$\Output\Obj\client.pbi</file>
+      <file>$PROJ_DIR$\Output\Obj\timer.r43</file>
+      <file>$PROJ_DIR$\..\..\..\DRV\timer_drv.h</file>
+      <file>$PROJ_DIR$\Output\Obj\uip.r43</file>
+      <file>$PROJ_DIR$\client.h</file>
+      <file>$PROJ_DIR$\..\UIP\pt.h</file>
+      <file>$PROJ_DIR$\Output\Obj\uip_arp.r43</file>
+      <file>$TOOLKIT_DIR$\inc\msp430x16x.h</file>
+      <file>$PROJ_DIR$\hal_enc.h</file>
+      <file>$PROJ_DIR$\Output\Obj\support.r43</file>
+      <file>$PROJ_DIR$\Output\Obj\general.r43</file>
+      <file>$TOOLKIT_DIR$\inc\clib\stdio.h</file>
+      <file>$PROJ_DIR$\..\UIP\uip_arp.h</file>
+      <file>$PROJ_DIR$\..\UIP\uipopt.h</file>
+      <file>$PROJ_DIR$\Output\Obj\uip.pbi</file>
+      <file>$PROJ_DIR$\Output\Obj\dhcpc.r43</file>
+      <file>$PROJ_DIR$\Output\Obj\timer_drv.r43</file>
+      <file>$PROJ_DIR$\Output\Obj\hal_enc.pbi</file>
+      <file>$PROJ_DIR$\Output\Obj\Star.pbd</file>
+      <file>$PROJ_DIR$\lnk430f5659.xcl</file>
+      <file>$PROJ_DIR$\..\UIP\clock-arch.c</file>
+      <file>$PROJ_DIR$\..\UIP\dhcpc.c</file>
+      <file>$PROJ_DIR$\client.c</file>
+      <file>$PROJ_DIR$\..\..\..\DRV\flash.c</file>
+      <file>$PROJ_DIR$\dfu.c</file>
+      <file>$PROJ_DIR$\..\..\..\DRV\enc424j600.c</file>
+      <file>$PROJ_DIR$\..\..\..\COMMON\general.c</file>
+      <file>$PROJ_DIR$\hal_enc.c</file>
+      <file>$PROJ_DIR$\network.c</file>
+      <file>$PROJ_DIR$\..\..\..\DRV\SPI.c</file>
+      <file>$PROJ_DIR$\main.c</file>
+      <file>$PROJ_DIR$\..\..\..\DRV\support.s43</file>
+      <file>$PROJ_DIR$\Output\Obj\general.pbi</file>
+      <file>$PROJ_DIR$\..\UIP\timer.c</file>
+      <file>$PROJ_DIR$\..\..\..\DRV\timer_drv.c</file>
+      <file>$PROJ_DIR$\..\UIP\uip.c</file>
+      <file>$PROJ_DIR$\..\UIP\uip_arp.c</file>
+      <file>$PROJ_DIR$\Output\Obj\flash.pbi</file>
+      <file>$PROJ_DIR$\..\..\..\DRV\SPI.h</file>
+      <file>$PROJ_DIR$\Output\Obj\network.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\clib\stdarg.h</file>
+      <file>$PROJ_DIR$\Output\Obj\SPI.pbi</file>
+      <file>$PROJ_DIR$\..\..\..\DRV\enc424j600conf.h</file>
+      <file>$PROJ_DIR$\Output\Obj\dhcpc.pbi</file>
+      <file>$PROJ_DIR$\..\..\..\COMMON\general.h</file>
+      <file>$PROJ_DIR$\Output\Obj\clock-arch.r43</file>
+      <file>$TOOLKIT_DIR$\lib\clib\cl430xlf.r43</file>
+      <file>$PROJ_DIR$\Output\Obj\hal_enc.r43</file>
+      <file>$PROJ_DIR$\..\UIP\uip-conf.h</file>
+      <file>$PROJ_DIR$\..\UIP\uip.h</file>
+      <file>$TOOLKIT_DIR$\inc\msp430f5659.h</file>
+      <file>$PROJ_DIR$\Output\Exe\Star.a43</file>
+      <file>$PROJ_DIR$\..\UIP\clock.h</file>
+      <file>$PROJ_DIR$\Output\Obj\main.pbi</file>
+      <file>$PROJ_DIR$\..\UIP\lc.h</file>
+      <file>$PROJ_DIR$\Output\Exe\Star.ulp</file>
+    </outputs>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 83 29</file>
+        </tool>
+        <tool>
+          <name>ULP430</name>
+          <file> 87</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\UIP\clock-arch.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 77</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 12</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 5 19 10 82 17 31 7</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 5 19 10 82 17 31 7</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\UIP\dhcpc.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 47</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 75</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 43 72 20 1 81 45 80 21 18 84 5 37 86 14 36 10 82 17 31 7 19</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 43 72 20 1 81 45 80 21 18 84 5 37 86 14 36 10 82 17 31 7 19</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\client.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 15</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 32</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 10 82 17 31 7 19 36 81 45 80 21 18 84 5 37 86 14 76 34 24 26 1 20 23</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 10 82 17 31 7 19 36 81 45 80 21 18 84 5 37 86 14 76 34 24 26 1 20 23</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\DRV\flash.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 30</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 69</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 10 82 17 31 7 19 1 20 26 34</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 10 82 17 31 7 19 1 20 26 34</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\dfu.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 22</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 9</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 1 20 10 82 17 31 7 19 76 24 26 36 81 45 80 21 18 84 5 37 86 14</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 1 20 10 82 17 31 7 19 76 24 26 36 81 45 80 21 18 84 5 37 86 14</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\DRV\enc424j600.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 8</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 3</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 11 10 82 17 31 7 19 74 34 40</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 11 10 82 17 31 7 19 74 34 40</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\COMMON\general.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 42</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 64</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 10 82 17 31 7 19 76 36</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 10 82 17 31 7 19 76 36</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\hal_enc.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 79</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 49</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 82 17 31 34 10 7 19 40 70</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 82 17 31 34 10 7 19 40 70</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\network.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 28</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 71</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 13 10 82 17 31 7 19 11 81 45 80 21 18 84 5 37 86 14 36</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 13 10 82 17 31 7 19 11 81 45 80 21 18 84 5 37 86 14 36</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\DRV\SPI.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 16</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 73</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 70 10 82 17 31 7 19 40 34</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 70 10 82 17 31 7 19 40 34</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\main.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 27</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 85</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 19 10 82 17 31 7 34 11 13 40 81 45 80 21 18 84 5 37 86 14 36 44 26 23 20 76 1 70 24</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 19 10 82 17 31 7 34 11 13 40 81 45 80 21 18 84 5 37 86 14 36 44 26 23 20 76 1 70 24</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\DRV\support.s43</name>
+      <outputs>
+        <tool>
+          <name>A430</name>
+          <file> 41</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>A430</name>
+          <file> 39</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\UIP\timer.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 33</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 4</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 84 5 18</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 84 5 18</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\DRV\timer_drv.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 48</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 6</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 34 10 82 17 31 7 19 23 20 76</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 34 10 82 17 31 7 19 23 20 76</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\UIP\uip.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 35</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 46</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 81 45 80 21 18 84 5 37 86 14 36 10 82 17 31 7 19 0 1 20</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 81 45 80 21 18 84 5 37 86 14 36 10 82 17 31 7 19 0 1 20</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\UIP\uip_arp.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 38</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 25</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 44 81 45 80 21 18 84 5 37 86 14 36 10 82 17 31 7 19 1 20</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 44 81 45 80 21 18 84 5 37 86 14 36 10 82 17 31 7 19 1 20</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Output\Exe\Star.a43</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 29</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 51 2 16 15 77 22 47 8 30 42 79 27 28 41 33 48 35 38 78</file>
+        </tool>
+      </inputs>
+    </file>
+  </configuration>
+</project>
+
+

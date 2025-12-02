@@ -1,0 +1,58 @@
+#include "msp430x16x.h"
+;-------------------------------------------------------------------------------
+; Name: support.s43
+; Func: -
+; Ver.: 1.1
+; Date: Jan-2004
+; Auth: Andreas Dannenberg
+;       MSP430 Applications
+;       Texas Instruments Inc.
+; Rem.: Build with IAR EW V2.21B
+;-------------------------------------------------------------------------------
+; Exported Symbols
+;-------------------------------------------------------------------------------
+            PUBLIC  DelayCycles
+            PUBLIC  WriteDWBE
+;-------------------------------------------------------------------------------
+; Implementation
+;-------------------------------------------------------------------------------
+            RSEG    CODE
+;-------------------------------------------------------------------------------
+; DelayCycles
+;
+; Delays the program flow by the given number of cycles (R12). The parameter
+; MUST be >= 20 (decimal).
+;
+; IN:  R12
+;-------------------------------------------------------------------------------
+DelayCycles                                     ; call #DelayCycles (5 cyc)
+            push    R12                         ; Save R12 (3 cyc)
+            sub.w   #17,R12                     ; Adjust cycle count (2 cyc)
+            clrc                                ; Clear carry bit (1 cyc)
+            rrc.w   R12                         ; Divide by 2 (1 cyc)
+            rra.w   R12                         ; Divide by 2 (1 cyc)
+Delay2      nop                                 ; (1 cyc)
+            dec.w   R12                         ; (1 cyc)
+            jnz     Delay2                      ; (2 cyc)
+            pop     R12                         ; Restore R12 (2 cyc)
+            ret                                 ; (2 cyc)
+;-------------------------------------------------------------------------------
+; WriteDWBE
+;
+; Writes a DWORD to the given memory location in big-endian format. The
+; memory address MUST be word-aligned.
+;
+; IN:  R12          Address
+;      R14          Lower Word
+;      R15          Upper Word
+;-------------------------------------------------------------------------------
+WriteDWBE
+            swpb    R14                         ; Swap bytes in lower word
+            swpb    R15                         ; Swap bytes in upper word
+            mov.w   R15,0(R12)                  ; Write 1st word to memory
+            mov.w   R14,2(R12)                  ; Write 2nd word to memory
+            swpb    R14                         ; Restore R14
+            swpb    R15                         ; Restore R15
+            ret
+
+            END

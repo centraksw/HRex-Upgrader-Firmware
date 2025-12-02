@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<workspace>
+  <project>
+    <path>$WS_DIR$\Star.ewp</path>
+  </project>
+  <batchBuild>
+    <batchDefinition>
+      <name>Release</name>
+      <member>
+        <project>Star</project>
+        <configuration>STAR-NA-PART1-Release</configuration>
+      </member>
+      <member>
+        <project>Star</project>
+        <configuration>STAR-NA-PART2-Release</configuration>
+      </member>
+      <member>
+        <project>Star</project>
+        <configuration>STAR-NA-Release</configuration>
+      </member>
+    </batchDefinition>
+  </batchBuild>
+</workspace>
+
+
