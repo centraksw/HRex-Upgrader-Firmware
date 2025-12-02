@@ -19,8 +19,8 @@
 #define BUF                                             ((struct uip_eth_hdr *)&uip_buf[0])
 #define RT_CLOCK_SECOND                                 3
 
-static BOOL blnPageResSent;
 static BCAST_DATA star_settings;
+static BOOL blnPageResSent;
 static WORD dhcpCounter;
 static BYTE MacAddr[6];
 static WORD OverflowCnt;
