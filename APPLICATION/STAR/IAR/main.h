@@ -8,6 +8,7 @@
 #endif
 
 WORD Timer_Ticks(void);
+void do_uip_process();
 
 extern BOOL blnStarUpgradeProcess;
 
