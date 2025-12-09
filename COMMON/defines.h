@@ -31,7 +31,7 @@ typedef unsigned char       uint8_t;
 
 #define RESET_TIMEOUT                   5000
 
-#define VERSION                         101
+#define VERSION                         102
 
 #define MAX_SEGMENTS                    255
 #define MAX_TAGSPIDER_SEGMENTS          30
