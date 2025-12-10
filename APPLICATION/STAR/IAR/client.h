@@ -7,6 +7,7 @@
 #define BROADCAST_SERVER_PORT                           10001
 #define SERVER_PORT                                     10002
 #define DEBUG_SERVER_PORT                               10004
+#define TCP_UPGRADE_PORT                                10006
 #define DEBUG_CLIENT_PORT                               6129
 #define BROADCAST_CLIENT_PORT                           7071
 

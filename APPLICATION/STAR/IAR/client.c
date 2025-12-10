@@ -90,7 +90,7 @@ void HandlePagingResponse()
       	memcpy(&StarCmd, recv_data+5, 2);
 
         if(StarCmd > 0 )
-          HandleStarAndBroadcastCommand(StarCmd);
+            HandleStarAndBroadcastCommand(StarCmd);
     }
 }
 
@@ -110,7 +110,7 @@ BOOL Init_FirmwareUpgrade(void)
     firmware_upgrade.segment_index = 0;
 
     uip_ipaddr(addr, ip[0], ip[1], ip[2], ip[3]);
-    conn = uip_connect(&addr, htons(10006));
+    conn = uip_connect(&addr, htons(TCP_UPGRADE_PORT));
     if( conn == NULL )
     {
         upgrade_status = FALSE;
@@ -160,8 +160,8 @@ void tcp_appcall_firmware_upgrade()
 
             if(total_segment == 0 || total_segment > MAX_SEGMENTS)
             {
-               upgrade_status = FALSE;
-               return;
+                upgrade_status = FALSE;
+                return;
             }
 
             if( data[2] == segment_index )
@@ -177,9 +177,9 @@ void tcp_appcall_firmware_upgrade()
                 {
                     //Check is last segment
                     if(segment_index == (total_segment-1) )
-                      Flash_Write_INTVEC(&data[4], 512);
+                        Flash_Write_INTVEC(&data[4], 512);
                     else
-                      Flash_Write_Segment(segment_index, &data[4], 512);
+                        Flash_Write_Segment(segment_index, &data[4], 512);
 
                     ++segment_index;
                 }

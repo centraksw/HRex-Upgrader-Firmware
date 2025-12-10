@@ -109,6 +109,7 @@ VOID DHCP_Process()
     DWORD idx;
     BYTE retry = 0;
     BYTE status;
+
     while( 1 )
     {
         // Initialize the uIP TCP/IP stack.
@@ -269,18 +270,6 @@ VOID DelayMoreThan64ms(DWORD delay)
     }
 }
 
-VOID SlotDelay(DWORD delay)
-{
-    WORD slots = delay / TIME_SLOT_US;
-    WORD cnt = (delay % TIME_SLOT_US) / 32;
-
-    Stop_SlotTimer();
-    if( slots )
-        Sleep_SlotTimer(slots);
-
-    DelayMoreThan64ms(cnt);
-}
-
 /*--------------------------------------------------------------------------------*/
 VOID main()
 {
@@ -288,7 +277,7 @@ VOID main()
     WORD StarId;
     blnInMainLoop = FALSE;
     blnWDTCheck = FALSE;
-    BOOL blnResetFlags=FALSE;
+    BOOL blnResetFlags = FALSE;
 
     //Initialize the Debug Out pins.
     DBG_INIT_BS();
@@ -373,7 +362,6 @@ VOID main()
     StarId = bcast_data.StarId;
 
     SendBeaconSlot = GetSpecialBeaconSlot(StarId);
-    //Set Star Type
 
     curSlot = 1;
 
@@ -437,10 +425,10 @@ VOID main()
             break;
         }
 
-        if( curSlot == MAX_SLOTS && blnResetFlags)
+        if( curSlot == MAX_SLOTS && blnResetFlags )
         {
-            blnResetFlags = FALSE;
             //Reset state variables.
+            blnResetFlags = FALSE;
             dhcpCounter++;
         }
     }

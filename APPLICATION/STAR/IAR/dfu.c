@@ -15,34 +15,33 @@ void Read_INTVEC()
 {
     DWORD Addr = 0xFFE0;
     BYTE buf[32];
-    Flash_Read(buf,Addr, 32);
+    Flash_Read(buf, Addr, 32);
     _DINT();
     Flash_Clear((char*)0xFC00);
-    Flash_Write(buf, 0xFC00 , 32);
+    Flash_Write(buf, 0xFC00, 32);
     _EINT();
 }
 
 void DFU_Task(void)
 {
-   DWORD idx;
-   Read_INTVEC();
-   //Dectect current part
+    DWORD idx;
+    Read_INTVEC();
 
-   Flash_Erase_Part();
+    Flash_Erase_Part();
 
-   Init_FirmwareUpgrade();
+    Init_FirmwareUpgrade();
 
-   for(idx=0; idx<500000; idx++)
-   {
-       blnInMainLoop = TRUE;
-       blnWDTCheck = FALSE;
+    for(idx=0; idx<500000; idx++)
+    {
+        blnInMainLoop = TRUE;
+        blnWDTCheck = FALSE;
 
         do_uip_process();
 
         if ( !GetUpdateStatus() ) break;
-   }
+    }
 
-   //If not complete, then Reset
+    //If not complete, then Reset
     WDTCTL = 0;
 }
 
@@ -70,40 +69,43 @@ void Flash_Erase_Part()
 
     for(idx=0; idx<MaxSegments; idx++)
     {
-      if((idx != 22) && (idx != 23))
-      {
-        seg = (char*)seg_addr;
+        // Segment no 22 and 23 are Temp interrupt vector and main Interrupt vector segments.
+        // We should not clear the actual firmware in these segments.
+        // 0xFC00 and 0xFE00
+        if((idx != 22) && (idx != 23))
+        {
+            seg = (char*)seg_addr;
 
-        //Disable All interrupts
-        _DINT();
+            //Disable All interrupts
+            _DINT();
 
-        //Clear Lock
-        FCTL3 = FWKEY;
+            //Clear Lock
+            FCTL3 = FWKEY;
 
-        //Enable segment erase
-        FCTL1 = FWKEY + ERASE;
+            //Enable segment erase
+            FCTL1 = FWKEY + ERASE;
 
-        while(FCTL3 & BUSY);
+            while(FCTL3 & BUSY);
 
-        //Perform Erase
-        *seg = 0;
-        while(FCTL3 & BUSY);
+            //Perform Erase
+            *seg = 0;
+            while(FCTL3 & BUSY);
 
-        //Disable Erase
-        FCTL1 = FWKEY;
+            //Disable Erase
+            FCTL1 = FWKEY;
 
-        //set LOCK
-        FCTL3 = FWKEY + LOCK;
+            //set LOCK
+            FCTL3 = FWKEY + LOCK;
 
-        while(FCTL3 & BUSY);
+            while(FCTL3 & BUSY);
 
-        //Enable Interrupts
-        _EINT();
+            //Enable Interrupts
+            _EINT();
 
-        seg_addr += SEG_SIZE;
-      }
-      else
-        seg_addr += SEG_SIZE;
+            seg_addr += SEG_SIZE;
+        }
+        else
+            seg_addr += SEG_SIZE;
     }
 }
 
@@ -115,13 +117,14 @@ void Flash_Write_Segment(BYTE seg_no, BYTE* seg_data, WORD len)
 
     // Segment no 22 and 23 are Temp interrupt vector and main Interrupt vector segments.
     // We should not write the actual firmware in these segments.
+    // 0xFC00 and 0xFE00
     if(seg_no > 21)
         seg_addr += (2 * SEG_SIZE);
 
     //Disable All interrupts
     _DINT();
 
-    Flash_Write(seg_data, seg_addr, 512);
+    Flash_Write(seg_data, seg_addr, SEG_SIZE);
 
     //Enable Interrupts
     _EINT();

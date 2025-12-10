@@ -1,36 +1,32 @@
 /******************************************
- * Title        : Microchip ENCX24J600 Ethernet Interface Driver
- * Author       : Jiri Melnikov
- * Created      : 29.03.2010
- * Version      : 0.2
- * Target MCU   : Atmel AVR series
- *
- * Description  : * This driver provides initialization and transmit/receive
- *                  functions for the Microchip ENCX24J600 100Mb Ethernet
- *                  Controller and PHY.
- *                * As addition, userspace access and hardware checksum
- *                  functions are available.
- *                * Only supported interface is SPI, no PSP interface available
- *                  by now.
- *                * No security functions are supported by now.
- *
- *                * This driver is inspired by ENC28J60 driver from Pascal
- *                  Stang (2005).
- *
- *                * Some lines of code are rewritten from Microchip's TCP/IP
- *                  stack.
- *
- * ****************************************/
+* Title        : Microchip ENCX24J600 Ethernet Interface Driver
+* Author       : Jiri Melnikov
+* Created      : 29.03.2010
+* Version      : 0.2
+* Target MCU   : Atmel AVR series
+*
+* Description  : * This driver provides initialization and transmit/receive
+*                  functions for the Microchip ENCX24J600 100Mb Ethernet
+*                  Controller and PHY.
+*                * As addition, userspace access and hardware checksum
+*                  functions are available.
+*                * Only supported interface is SPI, no PSP interface available
+*                  by now.
+*                * No security functions are supported by now.
+*
+*                * This driver is inspired by ENC28J60 driver from Pascal
+*                  Stang (2005).
+*
+*                * Some lines of code are rewritten from Microchip's TCP/IP
+*                  stack.
+*
+* ****************************************/
 
 #include "enc424j600.h"
 #include "enc424j600conf.h"
 #include "defines.h"
 #include "timer_drv.h"
-
-//#include  <msp430x54x.h>
 #include "hal_enc.h"
-
-//extern void Timer_Delay(UINT16 time);
 
 #define	_delay_us(x)	CCR_Delay(x*20)
 
@@ -67,8 +63,8 @@ static void enc424j600BFCReg(uint16_t address, uint16_t bitMask);
 
 
 /********************************************************************
- * INITIALIZATION
- * ******************************************************************/
+* INITIALIZATION
+* ******************************************************************/
 void enc424j600Init(void) {
 
     //Set default bank
@@ -79,8 +75,8 @@ void enc424j600Init(void) {
 
     // Clear the PKTCNT field in ESTAT by setting the PKTDEC bit
     // (ECON1<8>) enough times for the count to reach zero.
-	while((enc424j600ReadStatus() & 0xFF) != 0)
-	    enc424j600BFSReg(ECON1, ECON1_PKTDEC);
+    while((enc424j600ReadStatus() & 0xFF) != 0)
+        enc424j600BFSReg(ECON1, ECON1_PKTDEC);
 
     // Initialize RX tracking variables and other control state flags
     nextPacketPointer = RXSTART;
@@ -102,46 +98,33 @@ void enc424j600Init(void) {
     // and symmetric PAUSE capability
     enc424j600WritePHYReg(PHANA, PHANA_ADPAUS0 | PHANA_AD10FD | PHANA_AD10 | PHANA_AD100FD | PHANA_AD100 | PHANA_ADIEEE0);
 
-    // Enable RX packet reception
-    //enc424j600BFSReg(ECON1, ECON1_RXEN);
-
     enc424j600PowerSaveDisable();
-
-    //Enable Ethernet interrupt
-    //EncSPI_WriteOpcode(SETEIE);
-
-    //Enable the received packet pending interrupt
-    //enc424j600BFSReg(EIE, EIE_PKTIE);
-
 }
 
 /********************************************************************
- * PACKET TRANSMISSION
- * ******************************************************************/
+* PACKET TRANSMISSION
+* ******************************************************************/
 
 bool enc424j600isPacketReceiveReady()
 {
-	if (!(enc424j600ReadReg(EIR) & EIR_PKTIF)) {
+    if (!(enc424j600ReadReg(EIR) & EIR_PKTIF)) {
         return FALSE;
     }
 
-	return TRUE;
+    return TRUE;
 }
 
 /**
- * Recieves packet
- * */
+* Recieves packet
+* */
 uint16_t enc424j600PacketReceive(uint16_t len, uint8_t* packet) {
     uint16_t newRXTail;
     RXSTATUS statusVector;
-	uint16_t recvLen;
+    uint16_t recvLen;
 
     if (!(enc424j600ReadReg(EIR) & EIR_PKTIF)) {
         return 0;
     }
-
-    //Disable Ethernet interrupt
-    //EncSPI_WriteOpcode(CLREIE);
 
     // Set the RX Read Pointer to the beginning of the next unprocessed packet
     enc424j600WriteReg(ERXRDPT, nextPacketPointer);
@@ -150,8 +133,8 @@ uint16_t enc424j600PacketReceive(uint16_t len, uint8_t* packet) {
 
     enc424j600ReadMemoryWindow(RX_WINDOW, (uint8_t*) & statusVector, sizeof (statusVector));
     recvLen = (statusVector.bits.ByteCount <= len+4) ? statusVector.bits.ByteCount-4 : 0;
-	if(recvLen > len)
-		recvLen = len;
+    if(recvLen > len)
+        recvLen = len;
     enc424j600ReadMemoryWindow(RX_WINDOW, packet, recvLen);
 
     newRXTail = nextPacketPointer - 2;
@@ -165,20 +148,13 @@ uint16_t enc424j600PacketReceive(uint16_t len, uint8_t* packet) {
     //Write new RX tail
     enc424j600WriteReg(ERXTAIL, newRXTail);
 
-    //Enable Ethernet interrupt
-    //EncSPI_WriteOpcode(SETEIE);
-
-
     return recvLen;
 }
 
 /**
- * Sends packet
- * */
+* Sends packet
+* */
 void enc424j600PacketSend(uint16_t len, uint8_t* packet) {
-
-    //Disable Ethernet interrupt
-    //EncSPI_WriteOpcode(CLREIE);
 
     // Set the Window Write Pointer to the beginning of the transmit buffer
     enc424j600WriteReg(EGPWRPT, TXSTART);
@@ -189,16 +165,13 @@ void enc424j600PacketSend(uint16_t len, uint8_t* packet) {
 
     enc424j600MACFlush();
 
-   //Wait until the transmission completes
-   while(!enc424j600MACIsTxReady());
-
-   //Enable Ethernet interrupt
-   //EncSPI_WriteOpcode(SETEIE);
+    //Wait until the transmission completes
+    while(!enc424j600MACIsTxReady());
 }
 
 /**
- * Reads MAC address of device
- * */
+* Reads MAC address of device
+* */
 void enc424j600ReadMacAddr(uint8_t * macAddr) {
     // Get MAC adress
     uint16_t regValue;
@@ -214,8 +187,8 @@ void enc424j600ReadMacAddr(uint8_t * macAddr) {
 }
 
 /**
- * Sets MAC address of device
- * */
+* Sets MAC address of device
+* */
 void enc424j600SetMacAddr(uint8_t * macAddr) {
     uint16_t regValue;
     ((uint8_t*) & regValue)[0] = *macAddr++;
@@ -230,10 +203,10 @@ void enc424j600SetMacAddr(uint8_t * macAddr) {
 }
 
 /**
- * Enables powersave mode
- * */
+* Enables powersave mode
+* */
 void enc424j600PowerSaveEnable(void) {
-	uint16_t state;
+    uint16_t state;
 
     //Turn off modular exponentiation and AES engine
     enc424j600BFCReg(EIR, EIR_CRYPTEN);
@@ -256,8 +229,8 @@ void enc424j600PowerSaveEnable(void) {
 }
 
 /**
- * Disables powersave mode
- * */
+* Disables powersave mode
+* */
 void enc424j600PowerSaveDisable(void) {
     uint16_t state;
     //Wake-up eth interface
@@ -271,17 +244,17 @@ void enc424j600PowerSaveDisable(void) {
 }
 
 /**
- * Is link connected?
- * @return <bool>
- */
+* Is link connected?
+* @return <bool>
+*/
 bool enc424j600IsLinked(void) {
     return (enc424j600ReadReg(ESTAT) & ESTAT_PHYLNK) != 0u;
 }
 
 /**
- * Saves data to userspace defined by USSTART & USEND
- * @return bool (true if saved, FALSE if there is no space)
- * */
+* Saves data to userspace defined by USSTART & USEND
+* @return bool (true if saved, FALSE if there is no space)
+* */
 bool enc424j600SaveToUserSpace(uint16_t position, uint8_t* data, uint16_t len) {
     if ((USSTART + position + len) > USEND) return FALSE;
     enc424j600WriteReg(EUDAWRPT, USSTART + position);
@@ -290,9 +263,9 @@ bool enc424j600SaveToUserSpace(uint16_t position, uint8_t* data, uint16_t len) {
 }
 
 /**
- * Loads data from userspace defined by USSTART & USEND
- * @return bool (true if area is in userspace, FALSE if asked area is out of userspace)
- * */
+* Loads data from userspace defined by USSTART & USEND
+* @return bool (true if area is in userspace, FALSE if asked area is out of userspace)
+* */
 bool enc424j600ReadFromUserSpace(uint16_t position, uint8_t* data, uint16_t len) {
     if ((USSTART + position + len) > USEND) return FALSE;
     enc424j600WriteReg(EUDARDPT, USSTART + position);
@@ -301,14 +274,14 @@ bool enc424j600ReadFromUserSpace(uint16_t position, uint8_t* data, uint16_t len)
 }
 
 /********************************************************************
- * UTILS
- * ******************************************************************/
+* UTILS
+* ******************************************************************/
 
 static void enc424j600SendSystemReset(void) {
-  uint16_t readData; 
-  uint16_t writeData = 0xAAAA;
-  
-// Perform a reset via the SPI/PSP interface
+    uint16_t readData;
+    uint16_t writeData = 0xAAAA;
+
+    // Perform a reset via the SPI/PSP interface
     do {
         // Set and clear a few bits that clears themselves upon reset.
         // If EUDAST cannot be written to and your code gets stuck in this
@@ -329,24 +302,24 @@ static void enc424j600SendSystemReset(void) {
         // checking if EUDAST went back to its reset default.  This test
         // should always pass, but certain special conditions might make
         // this test fail, such as a PSP pin shorted to logic high.
-   } while (enc424j600ReadReg(EUDAST) != 0x0000u);
+    } while (enc424j600ReadReg(EUDAST) != 0x0000u);
 
-   EncSPI_WriteRegister16(WCR | (MAADR1 & 0x1F), writeData);
-   readData = EncSPI_ReadRegister16(RCR | (MAADR1 & 0x1F));
+    EncSPI_WriteRegister16(WCR | (MAADR1 & 0x1F), writeData);
+    readData = EncSPI_ReadRegister16(RCR | (MAADR1 & 0x1F));
     // Really ensure reset is done and give some time for power to be stable
     _delay_us(1000);
 }
 
 /**
- * Is transmission active?
- * @return <bool>
- */
+* Is transmission active?
+* @return <bool>
+*/
 static bool enc424j600MACIsTxReady(void) {
     return !(enc424j600ReadReg(ECON1) & ECON1_TXRTS);
 }
 
 static void enc424j600MACFlush(void) {
-	uint16_t w;
+    uint16_t w;
 
     // Check to see if the duplex status has changed.  This can
     // change if the user unplugs the cable and plugs it into a
@@ -367,7 +340,7 @@ static void enc424j600MACFlush(void) {
             enc424j600WriteReg(MABBIPG, 0x12);
             w &= ~MACON2_FULDPX;
         }
-		w |= (MACON2_NOBKOFF | MACON2_BPEN);
+        w |= (MACON2_NOBKOFF | MACON2_BPEN);
         enc424j600WriteReg(MACON2, w);
     }
 
@@ -377,9 +350,9 @@ static void enc424j600MACFlush(void) {
 }
 
 /**
- * Calculates IP checksum value
- *
- * */
+* Calculates IP checksum value
+*
+* */
 static uint16_t enc424j600ChecksumCalculation(uint16_t position, uint16_t length, uint16_t seed) {
     // Wait until module is idle
     while (enc424j600ReadReg(ECON1) & ECON1_DMAST) {
@@ -408,8 +381,8 @@ static uint16_t enc424j600ChecksumCalculation(uint16_t position, uint16_t length
 }
 
 /********************************************************************
- * READERS AND WRITERS
- * ******************************************************************/
+* READERS AND WRITERS
+* ******************************************************************/
 
 static void enc424j600WriteMemoryWindow(uint8_t window, uint8_t *data, uint16_t length) {
     uint8_t op = WBMUDA;
@@ -439,10 +412,10 @@ static void enc424j600ReadMemoryWindow(uint8_t window, uint8_t *data, uint16_t l
 }
 
 /**
- * Reads from address
- * @variable <uint16_t> address - register address
- * @return <uint16_t> data - data in register
- */
+* Reads from address
+* @variable <uint16_t> address - register address
+* @return <uint16_t> data - data in register
+*/
 static uint16_t enc424j600ReadReg(uint16_t address) {
     uint16_t returnValue;
     uint8_t bank;
@@ -465,17 +438,17 @@ static uint16_t enc424j600ReadReg(uint16_t address) {
         }
         returnValue = EncSPI_ReadRegister16(RCR | (address & 0x1F));
     } else {
-		returnValue = EncSPI_ReadRegisterUnbanked(address);
+        returnValue = EncSPI_ReadRegisterUnbanked(address);
     }
 
     return returnValue;
 }
 
 /**
- * Writes to register
- * @variable <uint16_t> address - register address
- * @variable <uint16_t> data - data to register
- */
+* Writes to register
+* @variable <uint16_t> address - register address
+* @variable <uint16_t> data - data to register
+*/
 static void enc424j600WriteReg(uint16_t address, uint16_t data) {
     uint8_t bank;
 
@@ -497,7 +470,7 @@ static void enc424j600WriteReg(uint16_t address, uint16_t data) {
         }
         EncSPI_WriteRegister16(WCR | (address & 0x1F), data);
     } else {
-		EncSPI_WriteRegisterUnbanked(address, data);
+        EncSPI_WriteRegisterUnbanked(address, data);
     }
 
 }
@@ -534,11 +507,11 @@ static void enc424j600WritePHYReg(uint8_t address, uint16_t Data) {
 }
 
 static void enc424j600ReadN(uint8_t op, uint8_t* data, uint16_t dataLen) {
-	EncSPI_ReadRegisterN(op, data, dataLen);
+    EncSPI_ReadRegisterN(op, data, dataLen);
 }
 
 static void enc424j600WriteN(uint8_t op, uint8_t* data, uint16_t dataLen) {
-	EncSPI_WriteRegisterN(op, data, dataLen);
+    EncSPI_WriteRegisterN(op, data, dataLen);
 }
 
 static void enc424j600BFSReg(uint16_t address, uint16_t bitMask) {
@@ -585,26 +558,10 @@ static void enc424j600BFCReg(uint16_t address, uint16_t bitMask) {
 
 bool enc424j600isRecvInterrupt()
 {
-	return (enc424j600ReadReg(EIR) & EIR_PKTIF);
+    return (enc424j600ReadReg(EIR) & EIR_PKTIF);
 }
 
 uint16_t enc424j600ReadStatus()
 {
-	return enc424j600ReadReg(ESTAT);
-}
-
-void ENC_TurnOffRX()
-{
-    //Turn off packet reception
-    enc424j600BFCReg(ECON1, ECON1_RXEN);
-    //Wait for any in-progress receptions to complete
-    while (enc424j600ReadReg(ESTAT) & ESTAT_RXBUSY) {
-        _delay_us(100);
-    }
-}
-
-void ENC_TurnOnRX()
-{
-    //Turn on packet reception
-    enc424j600BFSReg(ECON1, ECON1_RXEN);
+    return enc424j600ReadReg(ESTAT);
 }

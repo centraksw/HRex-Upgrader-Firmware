@@ -77,9 +77,6 @@ bool enc424j600isRecvInterrupt();
 
 uint16_t enc424j600ReadStatus();
 
-void ENC_TurnOnRX();
-void ENC_TurnOffRX();
-
 // Crypto memory addresses.  These are accessible by the DMA only and therefore
 // have the same addresses no matter what MCU interface is being used (SPI,
 // 8-bit PSP, or 16-bit PSP)

@@ -2,13 +2,11 @@
  * @file  hal_enc.c
  *
 ***************************************************************************/
-//#include  <msp430x16x.h>
-#include "msp430f5659.h"
 #include "timer_drv.h"
 #include "hal_enc.h"
 #include "SPI.h"
+
 #define	_delay_us(x)	CCR_Delay(x*20)
-//#define	_delay_us(x)	__delay_cycles(x*20)
 #define CLK_DELAY       10
 
 
@@ -25,8 +23,8 @@ void halEncInit(void)
   // Set up pins used by peripheral unit
   //ENC_PORT_DIR |= ENC_SPI_SIMO + ENC_SPI_CLK + ENC_SPI_CS;
   //ENC_PORT_DIR &= ~ENC_SPI_SOMI;
-  
-  SPI_Init();  
+
+    SPI_Init();
 }
 
 /**********************************************************************//**
@@ -43,7 +41,6 @@ void halEncWriteByte(unsigned char data)
     SPI_Enable();
     SPI_WriteByte( data );
     SPI_Disable();
-  
 }
 
 void EncSPI_WriteOpcode(unsigned char opcode)
@@ -63,15 +60,15 @@ void EncSPI_WriteRegister08(unsigned char regAddr, unsigned char data)
 
 void EncSPI_WriteRegister16(unsigned char regAddr, unsigned short data)
 {
-  unsigned char lsb, msb;
-  lsb = (data & 0xFF);
-  msb = ((data & 0xFF00)>>8);
- 
-  SPI_Enable();
-  SPI_WriteByte( regAddr );
-  SPI_WriteByte( lsb );
-  SPI_WriteByte( msb );
-  SPI_Disable();
+    unsigned char lsb, msb;
+    lsb = (data & 0xFF);
+    msb = ((data & 0xFF00)>>8);
+
+    SPI_Enable();
+    SPI_WriteByte( regAddr );
+    SPI_WriteByte( lsb );
+    SPI_WriteByte( msb );
+    SPI_Disable();
 }
 
 void EncSPI_WriteRegisterUnbanked(unsigned char regAddr, unsigned short data)
@@ -140,10 +137,10 @@ unsigned long EncSPI_ReadRegisterUnbanked(unsigned char regAddr)
 
 void EncSPI_ReadRegisterN(unsigned char opcode, unsigned char *datas, unsigned short len)
 {
-  SPI_Enable();
-  SPI_WriteByte( opcode );
-  SPI_ReadBytes( datas, len);
-  SPI_Disable();
+    SPI_Enable();
+    SPI_WriteByte( opcode );
+    SPI_ReadBytes( datas, len);
+    SPI_Disable();
 }
 
 /**********************************************************************//**
@@ -156,7 +153,7 @@ void EncSPI_ReadRegisterN(unsigned char opcode, unsigned char *datas, unsigned s
 unsigned char halEncReadByte(void)
 {
    unsigned char data = 0;
-  
+
    SPI_Enable();
    SPI_ReadByte(&data);
    SPI_Disable();
